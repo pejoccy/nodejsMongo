@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h2= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='surname') Surname:
+      input.form-control(type='text', placeholder='Surname' name='surname' required='true' value=(undefined===contact ? '' : contact.surname) )
+    div.form-group
+      label(for='firstname') Firstname:
+      input.form-control(type='text', placeholder='Firstname' name='firstname' required='true' value=(undefined===contact ? '' : contact.firstname) )
+    div.form-group
+      label(for='gender') Gender:
+      select.form-control(type='select', placeholder='Select gender' name='gender' )
+        each gender, index in genders
+          if contact
+            option(value=contact.gender selected=(contact.gender===index ? 'selected' : false)) #{gender}
+          else
+            option(value=index) #{gender}
+    div.form-group
+      label(for='phone') Phone:
+      input.form-control(type='text', placeholder='08012345678' name='phone' value=(undefined===contact ? '' : contact.phone))
+    div.form-group
+      label.hidden-sm-down(for='email') Email:
+      input.form-control(type='text', placeholder='info@example.com' name='email' value=(undefined===contact ? '' : contact.email) )
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

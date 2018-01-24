@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2= title
+
+  div.list-group
+  each contact in contacts
+    div.list-group-item.list-group-item-action.flex-column.align-items-start(href='#')
+      div.d-flex.w-100.justify-content-between
+        h5.mb-1 #{contact.name}
+        small
+          a(href='#') delete
+          a(href=contact.url) update
+      p.mb-1 #{contact.phone}
+      p.mb-1 #{contact.email}
+      small.left
+        em created 24th Jan 2018
+  else
+    p There are no contacts
