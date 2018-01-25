@@ -5,7 +5,23 @@ html
     link(rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      button.navbar-toggler(type='button')(data-toggle='collapse')(data-target='#navbarNav')(aria-controls='navbarNav')(aria-expanded='false')(aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      div#navbarNav.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='/contact') Contacts
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/contact/create') Create Contact
     div.container
       div.row
-        div.col-md-5.center
+        div.col-md-3.visible-md-block
+          ul.nav.flex-column
+            li.nav-item
+              a.nav-link(href='/contact') All Contacts
+            li.nav-item
+              a.nav-link(href='/contact/create') Create Contact
+        div.col-md-7.center
           block content

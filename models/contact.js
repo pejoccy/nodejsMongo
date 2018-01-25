@@ -7,16 +7,18 @@ var ContactSchema = new Schema({
   surname: {type: String, required: true, max: 150},
   firstname: {type: String, required: true, max: 150},
   gender: {type: String, required: true},
-  date_of_birth: {type: Date},
   phone: {type: String, required: true, max: 15},
   email: {type: String, max: 255},
+}, {
+  _id: true,
+  autoIndex: true,
 });
 
 // Virtual properties
 ContactSchema
   .virtual('name')
   .get(function() {
-    return this.surname + ' ' + this.firstname;
+    return this.surname + ', ' + this.firstname;
   });
 
 ContactSchema
